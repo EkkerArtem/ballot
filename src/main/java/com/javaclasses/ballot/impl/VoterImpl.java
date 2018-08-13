@@ -15,7 +15,9 @@ public class VoterImpl implements Voter {
 
     @Override
     public void vote(int id) {
-        if (voting.check() == true) {
+        int votes = voting.getVotersLeft();
+
+        if (voting.check()) {
 
             int a = voting.getFirstLargest();
             int b = voting.getSecondLargest();
@@ -23,11 +25,12 @@ public class VoterImpl implements Voter {
             ballotBox.addCandidate(id);
             ballotBox.addVote(id);
 
-            if (a == 0 || ballotBox.getBallotbox().get(id) > a || ballotBox.getBallotbox().get(id) > b) {
-                voting.getLeaders();
+            if (votes/2 >= voting.getVotersLeft()) {
+                if (a == 0 || ballotBox.getBallotbox().get(id) > a || ballotBox.getBallotbox().get(id) > b) {
+                    voting.getLeaders();
+                }
             }
-
-            int votesrLeft = voting.getVotersLeft() - 1;
+            int votesrLeft = votes - 1;
             voting.setVotersLeft(votesrLeft);
         } else throw new IllegalStateException("Voting ended");
 
