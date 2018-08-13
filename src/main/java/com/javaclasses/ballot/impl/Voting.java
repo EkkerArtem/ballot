@@ -8,7 +8,7 @@ public class Voting {
      * Count of voters left to vote.
      */
     private int votersLeft;
-    private final BallotBox ballotBox = new BallotBox();
+    private final BallotBox ballotBox;
     /**
      * Candidate with biggest amount of votes.
      */
@@ -17,6 +17,10 @@ public class Voting {
      * Candidate with second biggest amount of votes.
      */
     private int secondLargest;
+
+    public Voting(BallotBox ballotBox) {
+        this.ballotBox = ballotBox;
+    }
 
     public int getVotersLeft() {
         return votersLeft;
@@ -32,7 +36,7 @@ public class Voting {
      * @return two candidates with biggest amounts of votes.
      */
     public int[] getLeaders() {
-        for (int value : ballotBox.getBallotbox().values()) {
+        for (int value : ballotBox.getBallotbox()) {
             if (value > firstLargest) {
                 secondLargest = firstLargest;
                 firstLargest = value;
@@ -57,7 +61,7 @@ public class Voting {
      * @return true if there is still need to continue voting. And false if there is no need to continue voting.
      */
     public boolean check() {
-        if (!(firstLargest - secondLargest > votersLeft) && votersLeft >= 1) {
+        if (!(firstLargest - secondLargest > votersLeft)) {
             return true;
 
         } else System.out.println("У нас есть победитель, который наюбрал " + firstLargest + " голосов!");

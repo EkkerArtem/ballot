@@ -1,24 +1,19 @@
 package com.javaclasses.ballot.ballotbox;
 
-import java.util.HashMap;
 
 public class BallotBox {
 
-    private final HashMap<Integer, Integer> ballotbox = new HashMap();
+    private int[] ballotbox;
 
-    public HashMap<Integer, Integer> getBallotbox() {
-        return ballotbox;
+    private final int amountOfVoters;
+
+    public BallotBox(int amountOfVoters) {
+        this.amountOfVoters = amountOfVoters;
+        ballotbox = new int[amountOfVoters];
     }
 
-    /**
-     * Method for adding a new id of candidate if it is first vote for him.
-     *
-     * @param id id of candidate that is voted for.
-     */
-    public void addCandidate(int id) {
-        if (!ballotbox.containsKey(id)) {
-            ballotbox.put(id, 0);
-        }
+    public int[] getBallotbox() {
+        return ballotbox;
     }
 
     /**
@@ -27,9 +22,7 @@ public class BallotBox {
      * @param id id of candidate that is voted for.
      */
     public void addVote(int id) {
-        if (ballotbox.containsKey(id)) {
-            ballotbox.replace(id, ballotbox.get(id) + 1);
-        }
+        ballotbox[id] = ballotbox[id] + 1;
     }
-
 }
+

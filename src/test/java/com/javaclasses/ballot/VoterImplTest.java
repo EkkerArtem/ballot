@@ -11,6 +11,7 @@ public class VoterImplTest {
     Voter voter;
 
 
+/*
     @Test
     void firstCandidateWin() {
         Voting voting = VoterImpl.getVoting();
@@ -53,16 +54,16 @@ public class VoterImplTest {
             voter.vote(500);
         }
     }
+*/
 
     @Test
     void timeCheckerForLongElections() {
-        Voting voting = VoterImpl.getVoting();
-        voting.setVotersLeft(1_000_000);
-        voter = new VoterImpl();
+        voter = new VoterImpl(100_000);
+
         long time = System.nanoTime();
         Random random = new Random();
-        for (int i = 1; i < voting.getVotersLeft(); i++) {
-            if (i < voting.getVotersLeft() * 0.6) {
+        for (int i = 1; i < 100_000; i++) {
+            if (i < 100_000 * 0.6) {
                 if ((i % 10 == 0)) voter.vote(10);
                 else voter.vote(random.nextInt(100));
             } else voter.vote(10);
