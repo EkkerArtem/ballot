@@ -56,22 +56,18 @@ public class VoterImplTest {
 
     @Test
     void timeCheckerForLongElections() {
-        long totalTime = 0;
-        for (int b = 0; b < 50; b++) {
-            Voting voting = VoterImpl.getVoting();
-            voting.setVotersLeft(1_000_000);
-            voter = new VoterImpl();
-            long time = System.nanoTime();
-            Random random = new Random(42);
-            for (int i = 1; i < voting.getVotersLeft(); i++) {
-                if (i < voting.getVotersLeft() * 0.6) {
-                    if ((i % 10 == 0)) voter.vote(10);
-                    else voter.vote(random.nextInt(100));
-                } else voter.vote(10);
-            }
-            totalTime += System.nanoTime() - time;
+        Voting voting = VoterImpl.getVoting();
+        voting.setVotersLeft(1_000_000);
+        voter = new VoterImpl();
+        long time = System.nanoTime();
+        Random random = new Random();
+        for (int i = 1; i < voting.getVotersLeft(); i++) {
+            if (i < voting.getVotersLeft() * 0.6) {
+                if ((i % 10 == 0)) voter.vote(10);
+                else voter.vote(random.nextInt(100));
+            } else voter.vote(10);
         }
-        System.out.println("Average time: " + (totalTime / 50) / 1e+9);
+        System.out.println("Your code run in " + (System.nanoTime() - time) / 1e+9 + " seconds");
     }
 
 }

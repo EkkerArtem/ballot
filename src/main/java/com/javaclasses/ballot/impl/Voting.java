@@ -2,9 +2,6 @@ package com.javaclasses.ballot.impl;
 
 import com.javaclasses.ballot.ballotbox.BallotBox;
 
-import java.util.Collection;
-import java.util.Collections;
-
 public class Voting {
 
     /**
@@ -29,10 +26,6 @@ public class Voting {
         this.votersLeft = votersLeft;
     }
 
-    public BallotBox getBallotBox() {
-        return ballotBox;
-    }
-
     /**
      * Method for getting two candidates with biggest amounts of votes.
      *
@@ -54,16 +47,8 @@ public class Voting {
         return firstLargest;
     }
 
-    /**
-     * Method for getting candidate with biggest amounts of votes.
-     *
-     * @return candidate with biggest amounts of votes.
-     */
-    public int getMax() {
-        Collection collection = ballotBox.getBallotbox().values();
-        Comparable coll = Collections.max(collection);
-        int max = (int) coll;
-        return max;
+    public int getSecondLargest() {
+        return secondLargest;
     }
 
     /**
