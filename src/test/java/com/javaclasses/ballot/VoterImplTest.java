@@ -5,6 +5,7 @@ import com.javaclasses.ballot.impl.Voting;
 import com.javaclasses.ballot.tree.BST;
 import org.junit.jupiter.api.Test;
 
+import javax.xml.soap.Node;
 import java.util.Random;
 
 
@@ -62,24 +63,21 @@ public class VoterImplTest {
         long time = System.nanoTime();
         Random random = new Random();
         for (int i = 1; i < 1_000_000; i++) {
+
+            int biggest = bst.max();
+           // int secondbiggest = bst.search(10).getVotes;
+
             if (i < 1_000_000 * 0.6) {
-                if ((i % 10 == 0)) bst.insert(10,1);
-                else bst.insert(random.nextInt(100),1);
-            } else bst.insert(10,1);
+                if ((i % 10 == 0)) {
+                    if (bst.search(10) != null){
+                        bst.increment(bst.search(10));
+                    } else bst.insert(10, 1);
+                }int a = random.nextInt(100);
+                if (bst.search(a) != null){
+                    bst.increment(bst.search(a));
+                } else bst.insert(a,1);
+            } else bst.increment(bst.search(10));
         } System.out.println("Your code run in " + (System.nanoTime() - time) / 1e+9 + " seconds");
     }
-        /*Voting voting = VoterImpl.getVoting();
-        voting.setVotersLeft(1_000_000);
-        voter = new VoterImpl();
-        long time = System.nanoTime();
-        Random random = new Random();
-        for (int i = 1; i < voting.getVotersLeft(); i++) {
-            if (i < voting.getVotersLeft() * 0.6) {
-                if ((i % 10 == 0)) voter.vote(10);
-                else voter.vote(random.nextInt(100));
-            } else voter.vote(10);
-        }
-        System.out.println("Your code run in " + (System.nanoTime() - time) / 1e+9 + " seconds");
-    }*/
 
 }

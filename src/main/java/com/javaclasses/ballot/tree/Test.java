@@ -8,20 +8,26 @@ public class Test {
 
         System.out.println("ADT.BST Insert... 30");
         bst.insert(30, 1);
-        bst.increment(30,1);
-        bst.increment(30,1);
+        bst.increment(bst.search(30));
+        bst.increment(bst.search(30));
+        bst.increment(bst.search(30));
+        bst.increment(bst.search(30));
+        bst.increment(bst.search(30));
+        bst.increment(bst.search(30));
         System.out.println("ADT.BST Insert... 50");
-        bst.insert(50,2);
+        bst.insert(50, 2);
+        bst.increment(bst.search(50));
+        bst.increment(bst.search(50));
         System.out.println("ADT.BST Insert... 40");
-        bst.insert(40,1);
+        bst.insert(40, 1);
         System.out.println("ADT.BST Insert... 60");
-        bst.insert(60,1);
+        bst.insert(60, 1);
         System.out.println("ADT.BST Insert... 20");
-        bst.insert(20,1);
+        bst.insert(20, 1);
         System.out.println("ADT.BST Insert... 25");
-        bst.insert(25,1);
+        bst.insert(25, 1);
         System.out.println("ADT.BST Insert... 10");
-        bst.insert(10,1);
+        bst.insert(10, 1);
 
         System.out.println("\nADT.BST Min... should be 10");
         System.out.println(bst.min());

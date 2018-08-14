@@ -9,6 +9,10 @@ public class BST {
             this.votes = votes;
         }
 
+        public int getVotes() {
+            return votes;
+        }
+
         private int votes;
         private Node left;
         private Node right;
@@ -38,6 +42,8 @@ public class BST {
             tmp = tmp.right;
         return tmp.value;
     }
+
+   // public int secondMax(){}
 
     public Node search(int value) {
         return searchWrapper(root, value);
@@ -83,12 +89,8 @@ public class BST {
         }
     }
 
-    public void increment(int value, int voted){
-        root = incrementWrapper(value, voted);
-    }
-    private Node incrementWrapper(int value, int voted){
-        int votednow = voted+1;
-        return new Node(value,votednow);
+    public void increment(Node node){
+        node.setVotes(node.getVotes()+1);
     }
 
     public void insert(int value, int voted) {
