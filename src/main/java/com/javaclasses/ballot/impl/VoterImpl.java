@@ -19,10 +19,10 @@ public class VoterImpl implements Voter {
         int votesrLeft = votes - 1;
         voting.setVotersLeft(votesrLeft);
         boolean check = votes/2 >= votesrLeft;
-        if (voting.check() || check) {
+        int a = voting.getFirstLargest();
+        int b = voting.getSecondLargest();
 
-            int a = voting.getFirstLargest();
-            int b = voting.getSecondLargest();
+        if (voting.check() || check) {
 
             ballotBox.addCandidate(id);
             ballotBox.addVote(id);
