@@ -34,6 +34,5 @@ public class VoterImpl implements Voter {
             }
 
         } else throw new IllegalStateException("Voting ended");
-
     }
 }

@@ -8,6 +8,7 @@ public class Voting {
      * Count of voters left to vote.
      */
     private int votersLeft;
+
     private final BallotBox ballotBox = new BallotBox();
     /**
      * Candidate with biggest amount of votes.
@@ -60,7 +61,7 @@ public class Voting {
         if (!(firstLargest - secondLargest > votersLeft) && votersLeft >= 1) {
             return true;
 
-        } else System.out.println("У нас есть победитель, который наюбрал " + firstLargest + " голосов!");
+        }
         return false;
     }
 }
