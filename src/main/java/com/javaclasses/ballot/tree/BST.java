@@ -38,16 +38,42 @@ public class BST {
         if (root == null)
             throw new TreeException("Tree is empty!");
         Node tmp = root;
-        while (tmp.right != null)
-            tmp = tmp.right;
-        return tmp.value;
+        int rez=0;
+        if (tmp.right!=null && tmp.left!=null){
+        do {
+            int temL=0;
+            int temR=0;
+            temR = tmp.right.value;
+            temL = tmp.left.value;
+            if (temL>=temR && temL>rez) rez = temL;
+            else if (temR>temL && temR>rez)rez = temR;
+        }while (tmp.right != null && tmp.left !=null);
+        }
+        return rez;
     }
 
-   // public int secondMax(){}
+    public int secondMax(int max) {
+        if (root == null)
+            throw new TreeException("Tree is empty!");
+        Node tmp = root;
+        int rez=0;
+        if (tmp.right!=null && tmp.left!=null){
+        do {
+            int temL=0;
+            int temR=0;
+            temR = tmp.right.value;
+            temL = tmp.left.value;
+            if (temL>=temR && temL>rez) rez = temL;
+            else if (temR>temL && temR>rez)rez = temR;
+        }while (tmp.right != null && tmp.left !=null && rez<max);
+        }
+        return rez;
+    }
 
     public Node search(int value) {
         return searchWrapper(root, value);
     }
+
     private Node searchWrapper(Node node, int value) {
         if (node == null || node.value == value)
             return node;
@@ -59,6 +85,7 @@ public class BST {
     public void inorder() {
         inorderWrapper(root);
     }
+
     private void inorderWrapper(Node root) {
         if (root != null) {
             inorderWrapper(root.left);
@@ -70,6 +97,7 @@ public class BST {
     public void preorder() {
         preorderWrapper(root);
     }
+
     private void preorderWrapper(Node root) {
         if (root != null) {
             System.out.print(root.value + ", ");
@@ -81,21 +109,27 @@ public class BST {
     public void postorder() {
         postorderWrapper(root);
     }
+
     private void postorderWrapper(Node root) {
         if (root != null) {
             postorderWrapper(root.left);
             postorderWrapper(root.right);
-            System.out.print(root.value + ":"+ root.votes + ", ");
+            System.out.print(root.value + ":" + root.votes + ", ");
         }
     }
 
-    public void increment(Node node){
-        node.setVotes(node.getVotes()+1);
+   /* public int getValue(Node node){
+        return node.getVotes();
+    }
+*/
+    public void increment(Node node) {
+        node.setVotes(node.getVotes() + 1);
     }
 
     public void insert(int value, int voted) {
         root = insertWrapper(root, value, voted);
     }
+
     private Node insertWrapper(Node node, int value, int voted) {
         if (node == null)
             return new Node(value, voted);
@@ -116,6 +150,7 @@ public class BST {
     public void delete(int value) {
         root = deleteItem(root, value);
     }
+
     private Node deleteItem(Node node, int value) {
         if (node == null)
             throw new TreeException("TreeException: Empty Tree or Node with specified value does not exist");
@@ -134,6 +169,7 @@ public class BST {
             return node;
         }
     }
+
     /**
      * four cases to consider
      * 1. The node is a leaf
@@ -155,11 +191,13 @@ public class BST {
             return node;
         }
     }
+
     private int findRightmost(Node node) {
         if (node.right == null)
             return node.value;
         return findRightmost(node.right);
     }
+
     private Node deleteRightmost(Node node) {
         if (node.right == null)
             return node.left;
@@ -170,11 +208,12 @@ public class BST {
     public void readFromArray(int[] array) {
         root = readFromArrayWrapper(array, 0, array.length - 1);
     }
+
     private Node readFromArrayWrapper(int[] array, int from, int to) {
         if (from > to)
             return null;
         int middle = (from + to) / 2;
-        Node node = new Node(array[middle],1);
+        Node node = new Node(array[middle], 1);
         node.left = readFromArrayWrapper(array, from, middle - 1);
         node.right = readFromArrayWrapper(array, middle + 1, to);
         return node;

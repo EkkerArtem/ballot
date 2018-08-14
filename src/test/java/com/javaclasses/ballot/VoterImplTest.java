@@ -59,24 +59,31 @@ public class VoterImplTest {
     @Test
     void timeCheckerForLongElections() {
         BST bst = new BST();
+        int biggest = 0;
+        int secondbiggest = 0;
+
 
         long time = System.nanoTime();
         Random random = new Random();
-        for (int i = 1; i < 1_000_000; i++) {
-
-            int biggest = bst.max();
-           // int secondbiggest = bst.search(10).getVotes;
-
+        for (int i = 1; i < 1_000; i++) {
             if (i < 1_000_000 * 0.6) {
                 if ((i % 10 == 0)) {
                     if (bst.search(10) != null){
                         bst.increment(bst.search(10));
+                       // int value =  bst.getValue(bst.search(10));
                     } else bst.insert(10, 1);
                 }int a = random.nextInt(100);
                 if (bst.search(a) != null){
                     bst.increment(bst.search(a));
+                   // int value =  bst.getValue(bst.search(a));
                 } else bst.insert(a,1);
             } else bst.increment(bst.search(10));
+           // int value = bst.getValue(bst.search(10));
+            /*if (biggest<value){
+                biggest = value;
+            }else if (secondbiggest < value){
+                secondbiggest = value;
+            }*/
         } System.out.println("Your code run in " + (System.nanoTime() - time) / 1e+9 + " seconds");
     }
 
