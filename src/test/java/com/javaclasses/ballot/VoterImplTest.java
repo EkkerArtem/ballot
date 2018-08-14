@@ -2,6 +2,7 @@ package com.javaclasses.ballot;
 
 import com.javaclasses.ballot.impl.VoterImpl;
 import com.javaclasses.ballot.impl.Voting;
+import com.javaclasses.ballot.tree.BST;
 import org.junit.jupiter.api.Test;
 
 import java.util.Random;
@@ -56,7 +57,18 @@ public class VoterImplTest {
 
     @Test
     void timeCheckerForLongElections() {
-        Voting voting = VoterImpl.getVoting();
+        BST bst = new BST();
+
+        long time = System.nanoTime();
+        Random random = new Random();
+        for (int i = 1; i < 1_000_000; i++) {
+            if (i < 1_000_000 * 0.6) {
+                if ((i % 10 == 0)) bst.insert(10,1);
+                else bst.insert(random.nextInt(100),1);
+            } else bst.insert(10,1);
+        } System.out.println("Your code run in " + (System.nanoTime() - time) / 1e+9 + " seconds");
+    }
+        /*Voting voting = VoterImpl.getVoting();
         voting.setVotersLeft(1_000_000);
         voter = new VoterImpl();
         long time = System.nanoTime();
@@ -68,6 +80,6 @@ public class VoterImplTest {
             } else voter.vote(10);
         }
         System.out.println("Your code run in " + (System.nanoTime() - time) / 1e+9 + " seconds");
-    }
+    }*/
 
 }
