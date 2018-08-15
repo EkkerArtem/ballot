@@ -1,6 +1,6 @@
 package com.javaclasses.ballot;
 
-public class BST {
+public class BSTimpl {
 
     private class Node {
         /**
@@ -94,6 +94,7 @@ public class BST {
 
     /**
      * Method for incrementing count of votes for the id.
+     *
      * @param node current node.
      */
     public void increment(Node node) {
@@ -102,6 +103,7 @@ public class BST {
 
     /**
      * Method for inserting a new candidate.
+     *
      * @param value id of the candidate.
      * @param voted count of votes.
      */
@@ -128,7 +130,7 @@ public class BST {
 
     /**
      * Method for deleting the node.
-     *
+     * <p>
      * Four cases to consider
      * 1. The node is a leaf.
      * 2. The node has no left child.
