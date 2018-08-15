@@ -25,51 +25,6 @@ public class BST {
 
     private Node root;
 
-    public int min() {
-        if (root == null)
-            throw new TreeException("Tree is empty!");
-        Node tmp = root;
-        while (tmp.left != null)
-            tmp = tmp.left;
-        return tmp.value;
-    }
-
-    public int max() {
-        if (root == null)
-            throw new TreeException("Tree is empty!");
-        Node tmp = root;
-        int rez=0;
-        if (tmp.right!=null && tmp.left!=null){
-        do {
-            int temL=0;
-            int temR=0;
-            temR = tmp.right.value;
-            temL = tmp.left.value;
-            if (temL>=temR && temL>rez) rez = temL;
-            else if (temR>temL && temR>rez)rez = temR;
-        }while (tmp.right != null && tmp.left !=null);
-        }
-        return rez;
-    }
-
-    public int secondMax(int max) {
-        if (root == null)
-            throw new TreeException("Tree is empty!");
-        Node tmp = root;
-        int rez=0;
-        if (tmp.right!=null && tmp.left!=null){
-        do {
-            int temL=0;
-            int temR=0;
-            temR = tmp.right.value;
-            temL = tmp.left.value;
-            if (temL>=temR && temL>rez) rez = temL;
-            else if (temR>temL && temR>rez)rez = temR;
-        }while (tmp.right != null && tmp.left !=null && rez<max);
-        }
-        return rez;
-    }
-
     public Node search(int value) {
         return searchWrapper(root, value);
     }
@@ -82,7 +37,7 @@ public class BST {
         return searchWrapper(node.right, value);
     }
 
-    public int getValue(Node node){
+    public int getValue(Node node) {
         int i = node.getVotes();
         return i;
     }
@@ -122,6 +77,7 @@ public class BST {
             System.out.print(root.value + ":" + root.votes + ", ");
         }
     }
+
     public void increment(Node node) {
         node.setVotes(node.getVotes() + 1);
     }
@@ -202,20 +158,6 @@ public class BST {
         if (node.right == null)
             return node.left;
         node.right = deleteRightmost(node.right);
-        return node;
-    }
-
-    public void readFromArray(int[] array) {
-        root = readFromArrayWrapper(array, 0, array.length - 1);
-    }
-
-    private Node readFromArrayWrapper(int[] array, int from, int to) {
-        if (from > to)
-            return null;
-        int middle = (from + to) / 2;
-        Node node = new Node(array[middle], 1);
-        node.left = readFromArrayWrapper(array, from, middle - 1);
-        node.right = readFromArrayWrapper(array, middle + 1, to);
         return node;
     }
 }
