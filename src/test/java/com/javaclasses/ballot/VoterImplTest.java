@@ -10,7 +10,7 @@ import java.util.Random;
 
 
 public class VoterImplTest {
-    Voter voter;
+ /*   Voter voter;
 
 
     @Test
@@ -54,9 +54,30 @@ public class VoterImplTest {
         for (int i = voting.getVotersLeft() / 2; i < voting.getVotersLeft(); i++) {
             voter.vote(500);
         }
+    }*/
+    @Test
+    void timeChecker(){
+        BST bst = new BST();
+        int biggest = 0;
+        int secondbiggest = 0;
+        long time = System.nanoTime();
+        Random random = new Random();
+
+        for (int i = 1; i < 1_000_000; i++){
+            int a = random.nextInt();
+            if (bst.search(a) != null){
+                bst.increment(bst.search(a));
+                int value =  bst.getValue(bst.search(a));
+                if (biggest<value){
+                    biggest = value;
+                }else if (secondbiggest < value){
+                    secondbiggest = value;
+                }
+            }else bst.insert(a,1);
+        }System.out.println("Your code run in " + (System.nanoTime() - time) / 1e+9 + " seconds");
     }
 
-    @Test
+  /*  @Test
     void timeCheckerForLongElections() {
         BST bst = new BST();
         int biggest = 0;
@@ -65,26 +86,36 @@ public class VoterImplTest {
 
         long time = System.nanoTime();
         Random random = new Random();
-        for (int i = 1; i < 1_000; i++) {
+        for (int i = 1; i < 1_000_000; i++) {
             if (i < 1_000_000 * 0.6) {
                 if ((i % 10 == 0)) {
                     if (bst.search(10) != null){
                         bst.increment(bst.search(10));
-                       // int value =  bst.getValue(bst.search(10));
+                        int value =  bst.getValue(bst.search(10));
+                        if (biggest<value){
+                            biggest = value;
+                        }else if (secondbiggest < value){
+                            secondbiggest = value;
+                        }
                     } else bst.insert(10, 1);
                 }int a = random.nextInt(100);
                 if (bst.search(a) != null){
                     bst.increment(bst.search(a));
-                   // int value =  bst.getValue(bst.search(a));
+                    int value =  bst.getValue(bst.search(a));
+                    if (biggest<value){
+                        biggest = value;
+                    }else if (secondbiggest < value){
+                        secondbiggest = value;
+                    }
                 } else bst.insert(a,1);
             } else bst.increment(bst.search(10));
-           // int value = bst.getValue(bst.search(10));
-            /*if (biggest<value){
+           int value = bst.getValue(bst.search(10));
+            if (biggest<value){
                 biggest = value;
             }else if (secondbiggest < value){
                 secondbiggest = value;
-            }*/
+            }
         } System.out.println("Your code run in " + (System.nanoTime() - time) / 1e+9 + " seconds");
-    }
+    }*/
 
 }

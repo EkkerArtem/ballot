@@ -82,6 +82,11 @@ public class BST {
         return searchWrapper(node.right, value);
     }
 
+    public int getValue(Node node){
+        int i = node.getVotes();
+        return i;
+    }
+
     public void inorder() {
         inorderWrapper(root);
     }
@@ -117,11 +122,6 @@ public class BST {
             System.out.print(root.value + ":" + root.votes + ", ");
         }
     }
-
-   /* public int getValue(Node node){
-        return node.getVotes();
-    }
-*/
     public void increment(Node node) {
         node.setVotes(node.getVotes() + 1);
     }
