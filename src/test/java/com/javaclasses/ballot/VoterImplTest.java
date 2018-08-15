@@ -2,11 +2,9 @@ package com.javaclasses.ballot;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.Random;
-
 
 public class VoterImplTest {
-    @Test
+   /* @Test
     void timeChecker() {
         BSTimpl BSTimpl = new BSTimpl();
         int biggest = 0;
@@ -18,6 +16,7 @@ public class VoterImplTest {
             for (int i = 1; i < 1_000_000; i++) {
                 int a = random.nextInt();
                 if (BSTimpl.search(a) != null) {
+
                     BSTimpl.increment(BSTimpl.search(a));
                     int value = BSTimpl.getValue(BSTimpl.search(a));
                     if (biggest < value) {
@@ -30,5 +29,21 @@ public class VoterImplTest {
             }
         }
         System.out.println("Your code run in " + (System.nanoTime() - time) / 1e+9 + " seconds");
-    }
+    }*/
+   @Test
+   void timeChecker(){
+       Treeqwe tree = new Treeqwe();
+       tree.insert(1,1);
+       tree.increment(tree.search(1));
+       tree.insert(2,1);
+       tree.insert(3,1);
+       tree.increment(tree.search(3));
+       tree.increment(tree.search(3));
+       tree.increment(tree.search(3));
+       tree.insert(4,1);
+       tree.insert(5,1);
+       tree.simpleBalance();
+       System.out.println(tree);
+   }
+
 }

@@ -1,5 +1,7 @@
 package com.javaclasses.ballot;
 
+import java.util.Vector;
+
 public class BSTimpl {
 
     private class Node {
@@ -26,6 +28,25 @@ public class BSTimpl {
         private Node(int value, int votes) {
             this.value = value;
             this.votes = votes;
+        }
+
+        Node buildTreeUtil(Vector<Node> nodes, int start,
+                           int end)
+        {
+            // base case
+            if (start > end)
+                return null;
+
+            /* Get the middle element and make it root */
+            int mid = (start + end) / 2;
+            Node node = nodes.get(mid);
+
+        /* Using index in Inorder traversal, construct
+           left and right subtress */
+            node.left = buildTreeUtil(nodes, start, mid - 1);
+            node.right = buildTreeUtil(nodes, mid + 1, end);
+
+            return node;
         }
     }
 
