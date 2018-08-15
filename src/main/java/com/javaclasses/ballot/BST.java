@@ -3,6 +3,9 @@ package com.javaclasses.ballot;
 public class BST {
 
     private class Node {
+        /**
+         * id of the node.
+         */
         private int value;
 
         public void setVotes(int votes) {
@@ -13,6 +16,9 @@ public class BST {
             return votes;
         }
 
+        /**
+         * count of votes for the id.
+         */
         private int votes;
         private Node left;
         private Node right;
@@ -25,6 +31,10 @@ public class BST {
 
     private Node root;
 
+    /**
+     * @param value id of the node.
+     * @return node with searched id.
+     */
     public Node search(int value) {
         return searchWrapper(root, value);
     }
@@ -37,6 +47,10 @@ public class BST {
         return searchWrapper(node.right, value);
     }
 
+    /**
+     * @param node current node.
+     * @return count of votes for current node.
+     */
     public int getValue(Node node) {
         int i = node.getVotes();
         return i;
@@ -78,10 +92,19 @@ public class BST {
         }
     }
 
+    /**
+     * Method for incrementing count of votes for the id.
+     * @param node current node.
+     */
     public void increment(Node node) {
         node.setVotes(node.getVotes() + 1);
     }
 
+    /**
+     * Method for inserting a new candidate.
+     * @param value id of the candidate.
+     * @param voted count of votes.
+     */
     public void insert(int value, int voted) {
         root = insertWrapper(root, value, voted);
     }
@@ -103,35 +126,14 @@ public class BST {
             throw new TreeException("Duplicate record!");
     }
 
-    public void delete(int value) {
-        root = deleteItem(root, value);
-    }
-
-    private Node deleteItem(Node node, int value) {
-        if (node == null)
-            throw new TreeException("TreeException: Empty Tree or Node with specified value does not exist");
-
-        Node newSubtree;
-        if (value == node.value) { // item is in the root of some subtree
-            node = deleteNode(node); // delete the item
-            return node;
-        } else if (value < node.value) { //search the left subtree
-            newSubtree = deleteItem(node.left, value);
-            node.left = newSubtree;
-            return node;
-        } else { // search the right subtree
-            newSubtree = deleteItem(node.right, value);
-            node.right = newSubtree;
-            return node;
-        }
-    }
-
     /**
-     * four cases to consider
-     * 1. The node is a leaf
-     * 2. The node has no left child
-     * 3. The node has no right child
-     * 4. The node has two children
+     * Method for deleting the node.
+     *
+     * Four cases to consider
+     * 1. The node is a leaf.
+     * 2. The node has no left child.
+     * 3. The node has no right child.
+     * 4. The node has two children.
      */
     private Node deleteNode(Node node) {
         if (node.left == null && node.right == null) // test for leaf
