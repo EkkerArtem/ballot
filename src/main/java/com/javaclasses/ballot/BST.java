@@ -1,4 +1,4 @@
-package com.javaclasses.ballot.tree;
+package com.javaclasses.ballot;
 
 public class BST {
 
