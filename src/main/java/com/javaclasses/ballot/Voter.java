@@ -8,7 +8,8 @@ package com.javaclasses.ballot;
 public interface Voter {
     /**
      * Main method for voting. If candidate with this id already exists it will increment his votes count,
-     *  if there is no candidate with inserted id - it will create him.
+     * if there is no candidate with inserted id - it will create him.
+     *
      * @param id id of candidate that is wanted to vote for.
      */
     void vote(int id);

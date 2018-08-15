@@ -1,5 +1,6 @@
 package com.javaclasses.ballot;
 
+import com.javaclasses.ballot.impl.VoterImpl;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

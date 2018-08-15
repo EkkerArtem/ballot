@@ -1,4 +1,4 @@
-package com.javaclasses.ballot;
+package com.javaclasses.ballot.impl;
 
 public class BTree {
     private class Node {
@@ -32,6 +32,7 @@ public class BTree {
 
     /**
      * Method for incrementing the count of votes for candidate, that is stored in node.
+     *
      * @param node node of the binary tree.
      */
     void increment(Node node) {
@@ -40,6 +41,7 @@ public class BTree {
 
     /**
      * Method for getting the count of votes for candidate, that is stored in node.
+     *
      * @param node node of the binary tree.
      * @return amount of votes for candidate.
      */
@@ -49,6 +51,7 @@ public class BTree {
 
     /**
      * Method for getting node from its id.
+     *
      * @param id id of the node of the binary tree.
      * @return node searched by id.
      */
@@ -58,8 +61,9 @@ public class BTree {
 
     /**
      * Inner method for getting node from its id.
+     *
      * @param node node of the binary tree.
-     * @param id id of the node of the binary tree.
+     * @param id   id of the node of the binary tree.
      * @return node searched by id.
      */
     private Node searchWrapper(Node node, int id) {
@@ -72,6 +76,7 @@ public class BTree {
 
     /**
      * Method for getting size of the node.
+     *
      * @return size of the node.
      */
     private int size() {
@@ -80,6 +85,7 @@ public class BTree {
 
     /**
      * Inner method for getting size of the node.
+     *
      * @param node node of the binary tree.
      * @return size of the node.
      */
@@ -90,6 +96,7 @@ public class BTree {
 
     /**
      * Method for getting height of the node.
+     *
      * @param node node of the binary tree.
      * @return height of the node.
      */
@@ -109,7 +116,8 @@ public class BTree {
 
     /**
      * Method for inserting new candidate;
-     * @param id id of the candidate.
+     *
+     * @param id            id of the candidate.
      * @param amountOfVotes amount of votes of the candidate.
      */
     void insert(int id, int amountOfVotes) {
@@ -118,8 +126,9 @@ public class BTree {
 
     /**
      * Inner method for inserting new candidate;
-     * @param node node of the binary tree.
-     * @param id id of the candidate.
+     *
+     * @param node          node of the binary tree.
+     * @param id            id of the candidate.
      * @param amountOfVotes amount of votes of the candidate.
      * @return new node.
      */
@@ -144,6 +153,7 @@ public class BTree {
 
     /**
      * Method for getting the id of the node by its position.
+     *
      * @param position position of the node.
      * @return node's id.
      */
@@ -156,7 +166,8 @@ public class BTree {
 
     /**
      * Inner method for getting the id of the node by its position.
-     * @param node node of the binary tree.
+     *
+     * @param node     node of the binary tree.
      * @param position position of the node.
      * @return node searched.
      */
@@ -185,8 +196,9 @@ public class BTree {
 
     /**
      * Inner method for balancing the binary tree.
-     * @param tree current binary tree.
-     * @param left last one on the left.
+     *
+     * @param tree  current binary tree.
+     * @param left  last one on the left.
      * @param right last one on the right.
      */
     private void simpleBalance(BTree tree, int left, int right) {
